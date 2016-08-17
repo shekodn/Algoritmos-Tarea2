@@ -3,11 +3,16 @@ using namespace std;
 #include <fstream>
 
 // cd sdn/TEC/V/Algoritmos/Tareas/Tarea_2/Algoritmos-Tarea2/
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //Solucion #1
 //Arreglo para solución #1
+int iSize = 154750;
 int arr1[154750];
+
+//mock
+//int arr1[10];
+//int iSize = 10;
+
 
 
 //Le archivo de texto y mete en el arreglo a las matriculas
@@ -20,14 +25,43 @@ void leeArchivo(){
 
 	while (matriculas >> iNumero) {
 
-		//cout << iNumero << endl;
+		cout << iNumero << endl;
 		arr1[iPosicion] = iNumero;
 		iPosicion++;
 
 	}
 
-	matriculas.close();
+	//matriculas.close();
 	iPosicion = 0;
+}
+
+void buscarArreglo(int iDato){
+
+	bool find = false;
+	int iPosicion = 0;
+
+	for (int i = 0; i < iSize; i++) {
+
+		if  (arr1[iPosicion] == iDato) {
+
+			find = true;
+			break;
+		}
+
+		iPosicion++;
+	}
+
+	if (find) {
+
+		cout << "Dato encontrado" << endl;
+
+	}
+
+	else {
+
+		cout << "Dato no encontrado" << endl;
+	}
+
 }
 
 
@@ -35,6 +69,7 @@ void leeArchivo(){
 void solucion1(){
 
 	leeArchivo();
+	buscarArreglo(4855469);
 
 
 }
