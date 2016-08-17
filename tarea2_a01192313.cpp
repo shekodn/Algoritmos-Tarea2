@@ -19,7 +19,6 @@ int arr1[154750];
 //int arr1[10];
 //int iSize = 10;
 
-
 //Le archivo de texto y mete en el arreglo a las matriculas
 void leeArchivo1(){
 
@@ -84,7 +83,7 @@ void solucion1(){
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //Solucion #2
 
-vector<int> v;  
+vector<int> v;  //vector donde se colocan las maticulas 
 
 //Le archivo de texto y mete en el vector a las matriculas
 void leeArchivo2(){
@@ -98,27 +97,42 @@ void leeArchivo2(){
 		cout << iNumero << endl;
 		v.push_back(iNumero);
 
-
-
 	}
 
-	//Sort
+	//Se ordena el vector en forma ascendiente 
 	sort(v.begin(), v.end());
 
-	//Print
-	cout << "vecotor:" << endl;
+	//se impirme vector 
+	/*
+	cout << "Vector:" << endl;
   	for (vector<int>::iterator it=v.begin(); it!=v.end(); ++it)
     cout << * it << endl;
   	cout << endl;
+  	*/
 
+
+
+  	
 }
 
+void bSearch2(int iDato){
+
+	//binary search
+  	if (binary_search(v.begin(), v.end(), iDato)) {
+    	cout << "Found " << iDato << endl;
+    } 
+    
+    else {
+        
+    	cout << "NOT found" << endl;
+    }
+}
 
 
 void solucion2(){
 
 	leeArchivo2();
-
+	bSearch2(485546911);
 
 }
 
