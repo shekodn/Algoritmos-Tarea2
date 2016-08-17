@@ -1,6 +1,12 @@
 using namespace std;
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <algorithm>
+
+
+//Sergio Diaz
+//A01192313
 
 // cd sdn/TEC/V/Algoritmos/Tareas/Tarea_2/Algoritmos-Tarea2/
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -14,9 +20,8 @@ int arr1[154750];
 //int iSize = 10;
 
 
-
 //Le archivo de texto y mete en el arreglo a las matriculas
-void leeArchivo(){
+void leeArchivo1(){
 
 	ifstream matriculas;
 	matriculas.open("matriculas.txt");
@@ -68,13 +73,51 @@ void buscarArreglo(int iDato){
 
 void solucion1(){
 
-	leeArchivo();
+	cout << "Solucion #1" << endl;
+	leeArchivo1();
 	buscarArreglo(4855469);
 
 
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Solucion #2
+
+vector<int> v;  
+
+//Le archivo de texto y mete en el vector a las matriculas
+void leeArchivo2(){
+
+	ifstream matriculas;
+	matriculas.open("mock.txt");
+	int iNumero;
+
+	while (matriculas >> iNumero) {
+
+		cout << iNumero << endl;
+		v.push_back(iNumero);
+
+
+
+	}
+
+	//Sort
+	sort(v.begin(), v.end());
+
+	//Print
+	cout << "vecotor:" << endl;
+  	for (vector<int>::iterator it=v.begin(); it!=v.end(); ++it)
+    cout << * it << endl;
+  	cout << endl;
+
+}
+
+
+
 void solucion2(){
+
+	leeArchivo2();
 
 
 }
@@ -88,8 +131,7 @@ int main(int argc, char const *argv[]) {
 	
 
 	//Solucion 1
-	cout << "Solucion #1" << endl;
-	solucion1();
+	//solucion1();
 	
 	//Solucion 2
 	solucion2();
