@@ -25,59 +25,6 @@ clock_t timeSol1 = clock();
 //Solucion #1
 //Arreglo para solución #1
 int iSize = 154750;
-int arr1[154750];
-
-//mock
-//int arr1[10];
-//int iSize = 10;
-
-//Le archivo de texto y mete en el arreglo a las matriculas
-void leeArchivo1(){
-
-	ifstream matriculas;
-	matriculas.open(sArchivo);
-	int iNumero;
-	int iPosicion = 0;
-
-	while (matriculas >> iNumero) {
-		arr1[iPosicion] = iNumero;
-		iPosicion++;
-	}
-
-	matriculas.close();
-}
-
-void buscarArreglo(int iDato){
-
-	bool find = false;
-
-	for (int i = 0; i < iSize; i++) {
-		if  (arr1[i] == iDato) {
-			find = true;
-			break;
-		}
-	}
-
-	if (find) {
-		cout << "Dato encontrado" << endl;
-	}
-
-	else {
-		cout << "Dato NO encontrado" << endl;
-	}
-}
-
-
-
-void solucion1(int iDato){
-
-	//cout << "Solucion #1" << endl;
-	leeArchivo1();
-	buscarArreglo(iDato);
-
-
-}
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //Solucion #2
@@ -132,53 +79,10 @@ void solucion2(int iDato){
 
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-//Solucion #3
-
-int arrHash[1000]; //arreglo estático de 1000 posiciones
-
-void nullInit(int arr[1000]){
-
-	for(int i = 0; i < 1000; i++){
-
-	}
-}
-
-void solucion3(int iDato){
-
-
-
-
-}
-
-//Le archivo de texto y mete en el arreglo a las matriculas
-void leeArchivo3(){
-
-	ifstream matriculas;
-	matriculas.open(sArchivo);
-	int iNumero;
-
-	while (matriculas >> iNumero) {
-	}
-
-	matriculas.close();
-}
-
-
-
-int funcionHash(int iNumero){
-
-	iNumero = iNumero % 1000;
-
-	return iNumero;
-}
-
 
 
 
 int main(int argc, char const *argv[]) {
-
-
 
 	int iDato = 744997;
 
@@ -188,14 +92,8 @@ int main(int argc, char const *argv[]) {
 
 	//while (iDato != -1) {
 
-		//Solucion 1
-		//solucion1(iDato);
-
 		//Solucion 2
 		//solucion2(iDato);
-
-		//Solucion 3
-		//solucion3(iDato);
 
 		//cout << "Si quiere insertar un dato ponga 1, si quiere salir ponga 0" << endl;
 		//cin >> iDato;
@@ -203,13 +101,8 @@ int main(int argc, char const *argv[]) {
 	//}
 
 
-	cout << "Posicion" << funcionHash(5289313) << " " << endl;;
-
-
 	timeSol1 = clock() - timeSol1;
-
 	double ms = double(timeSol1) / CLOCKS_PER_SEC * 1000;
-
 	cout << "time: " << ms << endl;
 
 }
