@@ -10,6 +10,7 @@ using namespace std;
 //Sergio Diaz
 //A01192313
 
+
 //Globales
 string sArchivo = "matriculas.txt";
 clock_t timeSol1 = clock();
@@ -18,6 +19,8 @@ clock_t timeSol1 = clock();
 
 
 // cd sdn/TEC/V/Algoritmos/Tareas/Tarea_2/Algoritmos-Tarea2/
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //Solucion #1
 //Arreglo para solución #1
@@ -58,7 +61,6 @@ void buscarArreglo(int iDato){
 	if (find) {
 		cout << "Dato encontrado" << endl;
 	}
-
 	else {
 		cout << "Dato NO encontrado" << endl;
 	}
@@ -76,8 +78,6 @@ void solucion1(int iDato){
 }
 
 int main(int argc, char const *argv[]) {
-
-
 
 	int iDato = 744997;
 

@@ -15,9 +15,7 @@ using namespace std;
 
 //Globales
 string sArchivo = "matriculas.txt";
-clock_t timeSol1 = clock();
-//clock_t timeSol2 = clock();
-//clock_t timeSol3 = clock();
+clock_t timeSol2 = clock();
 
 
 // cd sdn/TEC/V/Algoritmos/Tareas/Tarea_2/Algoritmos-Tarea2/
@@ -101,8 +99,8 @@ int main(int argc, char const *argv[]) {
 	//}
 
 
-	timeSol1 = clock() - timeSol1;
-	double ms = double(timeSol1) / CLOCKS_PER_SEC * 1000;
+	timeSol2 = clock() - timeSol2;
+	double ms = double(timeSol2) / CLOCKS_PER_SEC * 1000;
 	cout << "time: " << ms << endl;
 
 }
