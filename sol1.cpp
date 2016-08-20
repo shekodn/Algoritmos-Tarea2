@@ -3,33 +3,26 @@ using namespace std;
 #include <fstream>
 #include <vector>
 #include <algorithm>
-#include <string>     // std::string, std::stoi
 #include <sys/time.h>
 #include <chrono>
 
 //Sergio Diaz
 //A01192313
 
-
-//Globales
-string sArchivo = "matriculas.txt";
-clock_t timeSol1 = clock();
-//clock_t timeSol2 = clock();
-//clock_t timeSol3 = clock();
-
-
 // cd sdn/TEC/V/Algoritmos/Tareas/Tarea_2/Algoritmos-Tarea2/
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //Solucion #1
+
+//Globales
+string sArchivo = "matriculas.txt";
+clock_t timeSol1 = clock();
+
 //Arreglo para solución #1
 int iSize = 154750;
 int arr1[154750];
 
-//mock
-//int arr1[10];
-//int iSize = 10;
 
 //Le archivo de texto y mete en el arreglo a las matriculas
 void leeArchivo1(){
@@ -66,6 +59,11 @@ void buscarArreglo(int iDato){
 	}
 }
 
+void tiempo(){
+	timeSol1 = clock() - timeSol1;
+	double ms = double(timeSol1) / CLOCKS_PER_SEC * 1000;
+	cout << "time sol 1: " << ms << endl;
+}
 
 
 void solucion1(int iDato){
@@ -73,13 +71,14 @@ void solucion1(int iDato){
 	//cout << "Solucion #1" << endl;
 	leeArchivo1();
 	buscarArreglo(iDato);
+	tiempo();
 
 
 }
 
 int main(int argc, char const *argv[]) {
 
-	int iDato = 744997;
+	int iDato = 51830031;
 
 	//cout << "Inserte la matricula que quiere buscar, si quiere salir ponga -1" << endl;
 	//cin >> iDato;
@@ -88,16 +87,12 @@ int main(int argc, char const *argv[]) {
 	//while (iDato != -1) {
 
 		//Solucion 1
-		//solucion1(iDato);
+		solucion1(iDato);
 
 		//cout << "Si quiere insertar un dato ponga 1, si quiere salir ponga 0" << endl;
 		//cin >> iDato;
 
 	//}
-
-
-	timeSol1 = clock() - timeSol1;
-	double ms = double(timeSol1) / CLOCKS_PER_SEC * 1000;
-	cout << "time sol 1: " << ms << endl;
+	
 
 }
