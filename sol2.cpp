@@ -77,7 +77,7 @@ void solucion2(int iDato){
 
 int main(int argc, char const *argv[]) {
 
-	int iDato = 5183003;
+	int iDato = 4855469;
 
 	//cout << "Inserte la matricula que quiere buscar, si quiere salir ponga -1" << endl;
 	//cin >> iDato;

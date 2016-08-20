@@ -8,11 +8,8 @@ using namespace std;
 
 //Sergio Diaz
 //A01192313
-
 // cd sdn/TEC/V/Algoritmos/Tareas/Tarea_2/Algoritmos-Tarea2/
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 //Solucion #1
 
 //Globales
@@ -23,10 +20,8 @@ clock_t timeSol1 = clock();
 int iSize = 154750;
 int arr1[154750];
 
-
 //Le archivo de texto y mete en el arreglo a las matriculas
 void leeArchivo1(){
-
 	ifstream matriculas;
 	matriculas.open(sArchivo);
 	int iNumero;
@@ -36,27 +31,16 @@ void leeArchivo1(){
 		arr1[iPosicion] = iNumero;
 		iPosicion++;
 	}
-
 	matriculas.close();
 }
 
-void buscarArreglo(int iDato){
-
-	bool find = false;
-
+bool buscarArreglo(int iDato){
 	for (int i = 0; i < iSize; i++) {
 		if  (arr1[i] == iDato) {
-			find = true;
-			break;
+			return true;
 		}
 	}
-
-	if (find) {
-		cout << "Dato encontrado" << endl;
-	}
-	else {
-		cout << "Dato NO encontrado" << endl;
-	}
+	return false;
 }
 
 void tiempo(){
@@ -67,32 +51,27 @@ void tiempo(){
 
 
 void solucion1(int iDato){
-
-	//cout << "Solucion #1" << endl;
 	leeArchivo1();
-	buscarArreglo(iDato);
+
+	if (buscarArreglo(iDato)) {
+		cout << "Dato encontrado" << endl;
+	}
+	else {
+		cout << "Dato NO encontrado" << endl;
+	}
 	tiempo();
-
-
 }
 
 int main(int argc, char const *argv[]) {
 
-	int iDato = 51830031;
+	int iDato;
+	cout << "Matricula -> "  << " ";
+	cin >> iDato;
 
-	//cout << "Inserte la matricula que quiere buscar, si quiere salir ponga -1" << endl;
-	//cin >> iDato;
-
-
-	//while (iDato != -1) {
-
-		//Solucion 1
+	while (iDato != -1) {
 		solucion1(iDato);
-
-		//cout << "Si quiere insertar un dato ponga 1, si quiere salir ponga 0" << endl;
-		//cin >> iDato;
-
-	//}
-	
-
+		cout << "si quiere salir ponga -1" << endl;
+		cout << "Matricula -> "  << " ";
+		cin >> iDato;
+	}
 }

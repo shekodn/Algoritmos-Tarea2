@@ -12,7 +12,6 @@ using namespace std;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //Solucion #3
-clock_t timeSol3 = clock();
 string sArchivo = "matriculas.txt";
 
 
@@ -32,7 +31,6 @@ void leeArchivo3(array<list<int>, 1000> &iMatriculas){
 	int iMatricula;
 	int iLlave;
 
-	
 	while (matriculas >> iMatricula){
 
 		iLlave = funcionHash(iMatricula);
@@ -46,15 +44,14 @@ void leeArchivo3(array<list<int>, 1000> &iMatriculas){
 
 
 
+//una funcion para contar el tiempo de ejecucion
+void tiempo(clock_t tiempo){
 
-void tiempo(){
-
-	timeSol3 = clock() - timeSol3;
-	double ms = double(timeSol3) / CLOCKS_PER_SEC * 1000;
+	tiempo = clock() - tiempo;
+	double ms = double(tiempo) / CLOCKS_PER_SEC * 1000;
 	cout << "time: " << ms << endl;
 
 }
-
 
 
 
@@ -77,13 +74,15 @@ bool buscarMatricula(int iDato, array< list <int>, 1000> iMatriculas) {
 }
 
 
-
 void solucion3(int iDato){
   
-  array<list<int>, 1000> iMatriculas;
-  
-  leeArchivo3(iMatriculas);
+  clock_t timeSol3 = clock(); 
 
+  array<list<int>, 1000> iMatriculas;
+  array<list<int>, 1000> iMatriculas2;
+
+
+  leeArchivo3(iMatriculas);
 
   if (buscarMatricula(iDato, iMatriculas)) {
 
@@ -95,17 +94,16 @@ void solucion3(int iDato){
   	cout << "Dato NO encontrado" << endl;
   }
 
-
-  tiempo();
-
+  tiempo(timeSol3);
 }
+
 
 
 
 
 int main(int argc, char const *argv[]) {
 
-	int iDato = 744997;
+	int iDato = 1855469;
 
 	//cout << "Inserte la matricula que quiere buscar, si quiere salir ponga -1" << endl;
 	//cin >> iDato;
