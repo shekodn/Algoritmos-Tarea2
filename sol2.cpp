@@ -6,26 +6,19 @@ using namespace std;
 #include <sys/time.h>
 #include <chrono>
 
-
+// cd sdn/TEC/V/Algoritmos/Tareas/Tarea_2/Algoritmos-Tarea2/
 
 //Sergio Diaz
 //A01192313
-
-// cd sdn/TEC/V/Algoritmos/Tareas/Tarea_2/Algoritmos-Tarea2/
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-//Solucion #2
-
+///////////////////////////////////////////////////////////////////////////////
 
 //Globales
 string sArchivo = "matriculas.txt";
 clock_t timeSol2 = clock();
-
 vector<int> v;  //vector donde se colocan las maticulas
 
 //Le archivo de texto y mete en el vector a las matriculas
 void leeArchivo2(){
-
 	ifstream matriculas;
 	matriculas.open(sArchivo);
 	int iNumero;
@@ -33,29 +26,20 @@ void leeArchivo2(){
 	while (matriculas >> iNumero) {
 		v.push_back(iNumero);
 	}
-
 	//Se ordena el vector en forma ascendiente
 	sort(v.begin(), v.end());
-
-
   	matriculas.close();
-
 }
 
 void bSearch2(int iDato){
-
 	//binary search
   	if (binary_search(v.begin(), v.end(), iDato)) {
-
   		cout << "Dato encontrado" << endl;
     }
-
     else {
-
     	cout << "Dato NO encontrado" << endl;
     }
 }
-
 
 void tiempo(){
 	timeSol2 = clock() - timeSol2;
@@ -63,36 +47,22 @@ void tiempo(){
 	cout << "time sol 2: " << ms << endl;
 }
 
-
 void solucion2(int iDato){
-
 	leeArchivo2();
 	bSearch2(iDato);
 	tiempo();
-
 }
 
-
-
-
 int main(int argc, char const *argv[]) {
+	int iDato;
+	cout << "Matricula -> "  << " ";
+	cin >> iDato;
 
-	int iDato = 4855469;
-
-	//cout << "Inserte la matricula que quiere buscar, si quiere salir ponga -1" << endl;
-	//cin >> iDato;
-
-
-	//while (iDato != -1) {
-
-		//Solucion 2
+	while (iDato != -1) {
 		solucion2(iDato);
-
-		//cout << "Si quiere insertar un dato ponga 1, si quiere salir ponga 0" << endl;
-		//cin >> iDato;
-
-	//}
-
-
-
+		timeSol2 = clock();
+		cout << "si quiere salir ponga -1" << endl;
+		cout << "Matricula -> "  << " ";
+		cin >> iDato;
+	}
 }

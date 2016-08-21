@@ -12,6 +12,7 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 //Solucion #3
 string sArchivo = "matriculas.txt";
+clock_t timeSol3 = clock();
 
 //regresa los ultimos 3 digitos de la matricula
 int funcionHash(int iMatricula){
@@ -56,7 +57,6 @@ bool buscarMatricula(int iDato, array< list <int>, 1000> iMatriculas) {
 }
 
 void solucion3(int iDato){
-  clock_t timeSol3 = clock();
   array<list<int>, 1000> iMatriculas;
   array<list<int>, 1000> iMatriculas2;
   leeArchivo3(iMatriculas);
@@ -78,6 +78,7 @@ int main(int argc, char const *argv[]) {
 
 	while (iDato != -1) {
 		solucion3(iDato);
+		timeSol3 = clock();
 		cout << "si quiere salir ponga -1" << endl;
 		cout << "Matricula -> "  << " ";
 		cin >> iDato;

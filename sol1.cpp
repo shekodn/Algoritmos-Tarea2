@@ -70,6 +70,7 @@ int main(int argc, char const *argv[]) {
 
 	while (iDato != -1) {
 		solucion1(iDato);
+		timeSol1 = clock();
 		cout << "si quiere salir ponga -1" << endl;
 		cout << "Matricula -> "  << " ";
 		cin >> iDato;
