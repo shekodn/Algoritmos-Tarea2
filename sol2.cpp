@@ -17,6 +17,9 @@ using namespace std;
 //Globales
 string sArchivo = "matriculas.txt";
 clock_t timeSol2 = clock();
+int iComparaciones = 0;
+
+
 
 void printComparaciones(int iNumero){
 
@@ -51,10 +54,9 @@ void tiempo(){
 }
 
 
-int myBinarySearch(vector<int> v, int iFirst,int iLast, int iDato, int iComparaciones){
+int myBinarySearch(vector<int> v, int iFirst,int iLast, int iDato){
 	
 	int index;
-	iComparaciones = 1 + iComparaciones);
 
 	if (iFirst > iLast){
 		iComparaciones++;
@@ -72,12 +74,12 @@ int myBinarySearch(vector<int> v, int iFirst,int iLast, int iDato, int iComparac
 
 			if (iDato < v[iMiddle]){
 				
-				index = myBinarySearch(v,iFirst, iMiddle - 1, iDato, iComparaciones);
+				index = myBinarySearch(v,iFirst, iMiddle - 1, iDato);
 				iComparaciones++;
 			}
 
 			else{
-				index = myBinarySearch(v, iMiddle + 1, iLast, iDato, iComparaciones);
+				index = myBinarySearch(v, iMiddle + 1, iLast, iDato);
 				iComparaciones++;
 			}
 		}
@@ -91,24 +93,17 @@ int myBinarySearch(vector<int> v, int iFirst,int iLast, int iDato, int iComparac
 void solucion2(int iDato){
 
 	vector<int> myVector;  //vector donde se colocan las maticulas	
-	int iComparaciones = 0;
 	myVector = 	leeArchivo2(myVector);
 
-	printComparaciones(iComparaciones);
-
-
-	if ( myBinarySearch(myVector, 0, myVector.size() - 1, iDato, iComparaciones) == -1 ){
+	if ( myBinarySearch(myVector, 0, myVector.size() - 1, iDato) == -1 ){
 		cout << "Dato NO encontrado" << endl;
 	} else {
 		cout << "Dato encontrado" << endl;
 	}
 	
-
-	printComparaciones(iComparaciones);
-
 	tiempo();
-
 	printComparaciones(iComparaciones);
+	cout << " " << endl;
 }
 
 
@@ -121,6 +116,7 @@ int main(int argc, char const *argv[]) {
 	int iDato;
 	cout << "Matricula -> "  << " ";
 	cin >> iDato;
+	cout << endl;
 
 	while (iDato != 0) {
 		solucion2(iDato);
@@ -128,6 +124,7 @@ int main(int argc, char const *argv[]) {
 		cout << "si quiere salir ponga 0" << endl;
 		cout << "Matricula -> "  << " ";
 		cin >> iDato;
+		iComparaciones = 0;
 	}	
 }
 
