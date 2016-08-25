@@ -5,6 +5,8 @@ using namespace std;
 #include <algorithm>
 #include <sys/time.h>
 #include <chrono>
+#include <math.h>       /* log */
+
 
 // cd sdn/TEC/V/Algoritmos/Tareas/Tarea_2/Algoritmos-Tarea2/
 
@@ -15,10 +17,16 @@ using namespace std;
 //Globales
 string sArchivo = "matriculas.txt";
 clock_t timeSol2 = clock();
-vector<int> v;  //vector donde se colocan las maticulas
+
+void printComparaciones(int iNumero){
+
+	cout << "Comparaciones: " << iNumero << endl;
+
+}
+
 
 //Le archivo de texto y mete en el vector a las matriculas
-void leeArchivo2(){
+vector<int> leeArchivo2(vector<int> v){
 	ifstream matriculas;
 	matriculas.open(sArchivo);
 	int iNumero;
@@ -26,20 +34,15 @@ void leeArchivo2(){
 	while (matriculas >> iNumero) {
 		v.push_back(iNumero);
 	}
+
 	//Se ordena el vector en forma ascendiente
-	sort(v.begin(), v.end());
+	sort(v.begin(),v.end());
+
   	matriculas.close();
+
+	return v;
 }
 
-void bSearch2(int iDato){
-	//binary search
-  	if (binary_search(v.begin(), v.end(), iDato)) {
-  		cout << "Dato encontrado" << endl;
-    }
-    else {
-    	cout << "Dato NO encontrado" << endl;
-    }
-}
 
 void tiempo(){
 	timeSol2 = clock() - timeSol2;
@@ -47,22 +50,84 @@ void tiempo(){
 	cout << "time sol 2: " << ms << endl;
 }
 
+
+int myBinarySearch(vector<int> v, int iFirst,int iLast, int iDato, int iComparaciones){
+	
+	int index;
+	iComparaciones = 1 + iComparaciones);
+
+	if (iFirst > iLast){
+		iComparaciones++;
+		index = -1;
+	}
+
+	else {
+		int iMiddle = (iFirst + iLast)/2;
+
+		if (iDato == v[iMiddle]){
+			index = iMiddle;
+			iComparaciones++;
+		}
+		else{
+
+			if (iDato < v[iMiddle]){
+				
+				index = myBinarySearch(v,iFirst, iMiddle - 1, iDato, iComparaciones);
+				iComparaciones++;
+			}
+
+			else{
+				index = myBinarySearch(v, iMiddle + 1, iLast, iDato, iComparaciones);
+				iComparaciones++;
+			}
+		}
+
+ 	} 
+ 
+ return index;
+
+ }
+
 void solucion2(int iDato){
-	leeArchivo2();
-	bSearch2(iDato);
+
+	vector<int> myVector;  //vector donde se colocan las maticulas	
+	int iComparaciones = 0;
+	myVector = 	leeArchivo2(myVector);
+
+	printComparaciones(iComparaciones);
+
+
+	if ( myBinarySearch(myVector, 0, myVector.size() - 1, iDato, iComparaciones) == -1 ){
+		cout << "Dato NO encontrado" << endl;
+	} else {
+		cout << "Dato encontrado" << endl;
+	}
+	
+
+	printComparaciones(iComparaciones);
+
 	tiempo();
+
+	printComparaciones(iComparaciones);
 }
 
+
+
+
+
+
 int main(int argc, char const *argv[]) {
+	
 	int iDato;
 	cout << "Matricula -> "  << " ";
 	cin >> iDato;
 
-	while (iDato != -1) {
+	while (iDato != 0) {
 		solucion2(iDato);
 		timeSol2 = clock();
-		cout << "si quiere salir ponga -1" << endl;
+		cout << "si quiere salir ponga 0" << endl;
 		cout << "Matricula -> "  << " ";
 		cin >> iDato;
-	}
+	}	
 }
+

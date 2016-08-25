@@ -14,6 +14,12 @@ using namespace std;
 string sArchivo = "matriculas.txt";
 clock_t timeSol3 = clock();
 
+void printComparaciones(int iNumero){
+
+	cout << "Comparaciones: " << iNumero << endl;
+
+}
+
 //regresa los ultimos 3 digitos de la matricula
 int funcionHash(int iMatricula){
 	return iMatricula % 1000;
@@ -44,17 +50,24 @@ void tiempo(clock_t tiempo){
 bool buscarMatricula(int iDato, array< list <int>, 1000> iMatriculas) {
 
 	int iLlave = funcionHash(iDato);
+	int iComparaciones = 0;
 
 	while (!iMatriculas[iLlave].empty()){
+
+		iComparaciones++;
+
 		if (iMatriculas[iLlave].front() == iDato) {
+			printComparaciones(iComparaciones);
 			return true;
 		}
 		else {
 			iMatriculas[iLlave].pop_front();
 		}
 	}
+	printComparaciones(iComparaciones);
 	return false;
 }
+
 
 void solucion3(int iDato){
   array<list<int>, 1000> iMatriculas;

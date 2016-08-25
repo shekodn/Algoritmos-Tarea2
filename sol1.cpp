@@ -20,6 +20,13 @@ clock_t timeSol1 = clock();
 int iSize = 154750;
 int arr1[154750];
 
+
+void printComparaciones(int iNumero){
+
+	cout << "Comparaciones: " << iNumero << endl;
+
+}
+
 //Le archivo de texto y mete en el arreglo a las matriculas
 void leeArchivo1(){
 	ifstream matriculas;
@@ -35,13 +42,25 @@ void leeArchivo1(){
 }
 
 bool buscarArreglo(int iDato){
+
+	int iComparaciones = 0;
+
 	for (int i = 0; i < iSize; i++) {
+
+		iComparaciones++;
+
 		if  (arr1[i] == iDato) {
+			printComparaciones(iComparaciones);
 			return true;
 		}
+
 	}
+	
+	printComparaciones(iComparaciones);
 	return false;
 }
+
+
 
 void tiempo(){
 	timeSol1 = clock() - timeSol1;
@@ -51,6 +70,8 @@ void tiempo(){
 
 
 void solucion1(int iDato){
+
+
 	leeArchivo1();
 
 	if (buscarArreglo(iDato)) {
